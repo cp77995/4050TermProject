@@ -1,3 +1,13 @@
+window.onload = function(){
+    toggleInfo();
+    reservedAvailableToggle();
+};
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+
 function toggleInfo() {
 
     var toggleButton = document.getElementById("toggleButton");
@@ -20,4 +30,24 @@ function toggleInfo() {
 
     }
 
+}
+
+function reservedAvailableToggle(){
+        var availableLink = document.getElementById("availableLink");
+        var tableTitle = document.getElementById("tableTitle");
+        var availableVehicles = document.getElementById("availableVehicles");
+        var reservedVehicles = document.getElementById("reservedVehicles");
+
+
+     if(availableLink.innerHTML === ("Available")){
+        tableTitle.innerHTML = '<a href="#" id="availableLink" onclick="reservedAvailableToggle()">Reserved</a> / <span style="font-weight: bold">Available</span>';
+        reservedVehicles.style.display = "none";
+        availableVehicles.style.display = "block";
+
+    }
+    else{
+        tableTitle.innerHTML = '<span style="font-weight: bold">Reserved</span> / <a href="#" id="availableLink" onclick="reservedAvailableToggle()">Available</a>';
+        reservedVehicles.style.display = "block";
+        availableVehicles.style.display = "none";
+    }
 }
